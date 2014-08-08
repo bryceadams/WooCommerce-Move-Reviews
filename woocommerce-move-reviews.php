@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Move Reviews
  * Plugin URI: http://captaintheme.com/
  * Description: Allows you to easily move reviews from one product to another.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Captain Theme
  * Author URI: http://captaintheme.com/
  * License: GPL2

@@ -7,7 +7,7 @@
  * @license   GPL-2.0+
  * @link      http://captaintheme.com
  * @copyright 2014 Captain Theme
- * @since     1.0.0
+ * @since     1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WCMR {
 
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 
 	protected $plugin_slug = 'woocommerce-move-reviews';
 
@@ -62,7 +62,7 @@ class WCMR {
 	 *
 	 * @package WooCommerce Move Reviews
 	 * @author  Captain Theme <info@captaintheme.com>
-	 * @since   1.0.0
+	 * @since   1.0.1
 	 */
 
   public function update_comment($id) {
@@ -79,7 +79,7 @@ class WCMR {
   }
 
   public function add_metabox() {
-  	add_meta_box('commentmovediv', 'Move Comment', array( $this, 'display_metabox' ), 'comment','normal');
+  	add_meta_box('commentmovediv', 'Move Review', array( $this, 'display_metabox' ), 'comment','normal');
   }
 
   public function display_metabox() {
