@@ -72,10 +72,22 @@ class WCMR {
   	global $wpdb;
 
   	$pid = $wpdb->get_var("SELECT comment_post_ID FROM $wpdb->comments WHERE comment_id='".$id."'");
-  	$wpdb->query("UPDATE $wpdb->posts SET comment_count=comment_count-1 WHERE ID='".$pid."'");
-  	$wpdb->query("UPDATE $wpdb->posts SET comment_count=comment_count+1 WHERE ID='".$_POST['wcmr_select_product']."'");
+  	$wpdb->query("UPDATE $wpdb->postmeta SET _wc_review_count=_wc_review_count-1 WHERE ID='".$pid."'");
+  	$wpdb->query("UPDATE $wpdb->postmeta SET _wc_review_count=_wc_review_count+1 WHERE ID='".$_POST['wcmr_select_product']."'");
   	$wpdb->query("UPDATE $wpdb->comments SET comment_post_ID='".$_POST['wcmr_select_product']."' WHERE comment_ID='".$id."'");
-
+	  
+	// update ratings
+	$_old_product = wc_get_product($pid);
+	$_new_product = wc_get_product($_POST['wcmr_select_product']);
+	  
+	$this->update_ratings($_old_product);
+	$this->update_ratings($_new_product);
+  }
+	
+  public function update_ratings($product_id) {
+  	$rating_count_old = WC_Comments::get_rating_counts_for_product($product_id);
+	$average_old = WC_Comments::get_average_rating_for_product($product_id);
+	$review_count_old = WC_Comments::get_review_count_for_product($product_id);
   }
 
   public function add_metabox() {
